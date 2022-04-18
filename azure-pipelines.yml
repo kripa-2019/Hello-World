@@ -2,23 +2,14 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+# azure-pipelines.yml
+name: FirstPipeline
+
+trigger:
+- main
+
 pool:
   vmImage: ubuntu-latest
 
-resources:
-  pipelines:
-  - pipeline: MyCIAlias  
-    source: Pipeline-A  
-    trigger:    
-      stages:         # This stage filter is used when evaluating conditions for 
-      - Build # triggering your pipeline. On successful completion of all the stages   # provided, your pipeline will be triggered.
-
-
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: echo This pipeline runs first !
