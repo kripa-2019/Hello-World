@@ -2,12 +2,17 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
-trigger:
-- master
-
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
+
+resources:
+  pipelines:
+  - pipeline: MyCIAlias  
+    source: Pipeline-A  
+    trigger:    
+      stages:         # This stage filter is used when evaluating conditions for 
+      - Build # triggering your pipeline. On successful completion of all the stages   # provided, your pipeline will be triggered.
+
 
 steps:
 - script: echo Hello, world!
